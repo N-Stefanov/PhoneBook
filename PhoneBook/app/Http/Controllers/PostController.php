@@ -25,9 +25,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts =  Post::orderBy('Fname','asc')->get();
+        if(request()->has('sort')){
+            $posts =  Post::where('Fname', request('sort'))
+            ->paginate(5)->appends('sort', request('sort'));
+        }
+        $posts =  Post::orderBy('Fname','asc')->paginate(5);
         return view('posts.index')->with('posts', $posts);
-
     }
 
     /**

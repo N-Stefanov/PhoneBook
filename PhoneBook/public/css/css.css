@@ -7,6 +7,10 @@
     margin-bottom: 2%;
 }
 
+.incorect {
+    border-left: 4px solid red;
+}
+
 .show p {
     position: relative;
     float: left;
